@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<h1>Informations du compte</h1
+    {% if compte is defined %}
+            {% for compte in compte %}        
+            <ul>
+            <li>Numéro de compte : {{ compte.numero }}</li> <!-- Utiliser la variable 'numero' ici -->
+            <li>CIN : {{ compte.cin }}</li>
+            <li>Nom : {{ compte.nom }}</li>
+            <li>Prénom : {{ compte.prenom }}</li>
+            <li>Solde : {{ compte.solde }}</li>
+            <li>Type : {{ compte.type }}</li>
+            <li>Statut : {{ compte.statut }}</li>
+            <li>Nature : {{ compte.nature }}</li>
+        </ul>
+         {% endfor %}
+    {% else %}
+        <p>Aucun compte trouvé.</p>
+    {% endif %}
+{% endblock %}

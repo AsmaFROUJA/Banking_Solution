@@ -1,0 +1,30 @@
+index:
+    path: /
+    controller: App\Controller\DefaultController::index
+
+login:
+    path: /login
+    controller: App\Controller\AuthentificationController::login
+
+affichecompt:
+    path: /affichecompt/{cin}
+    controller: App\Controller\CompteController::afficheCompt
+
+demande_credit:
+    path: /demande_credit
+    controller: App\Controller\CreditController::demande_credit
+    methods: [GET, POST]
+
+
+afficheuncompte:
+    path: /afficheuncompte/{numero}
+    controller: App\Controller\CompteController::afficheuncompte
+    methods: GET
+    requirements:
+        numero: '\d+'
+
+
+interface:
+    path: /interface
+    controller: App\Controller\PageController::indexx
+    methods: GET

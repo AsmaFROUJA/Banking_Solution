@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+    body{
+                    background: linear-gradient(to right, #BBB086, #88b8e1);
+                    margin-top:50px;
+
+    }
+        /* Styles spécifiques au formulaire */
+        form {
+            width: 400px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #f9f9f9;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+              font-family: Footlight MT;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #BBB086;
+            border: none;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+
+        }
+
+        button[type="submit"]:hover {
+            background-color:  linear-gradient(to right, #BBB086, #88b8e1);
+            
+        }
+    </style>
+{% endblock %}
+
+   
+{% block body %}
+    <form method="POST">
+       
+        {{ form_start(form) }}   <h1>Modifier</h1>
+        {{ form_end(form) }}
+        {{ form_widget(form.submit, {'attr': {'class': 'modifier-button'}}) }}
+      
+    </form>
+{% endblock %}
+

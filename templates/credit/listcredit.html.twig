@@ -1,0 +1,128 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+         	background: linear-gradient(to right, #BBB086, #88b8e1);
+        }
+        main.table {
+            width: 90vw;
+            height: 90vh;
+            background-color: #fff5;
+            backdrop-filter: blur(7px);
+            box-shadow: 0 .4rem .8rem #0005;
+            border-radius: .8rem;
+            overflow: hidden;
+        }
+        h3 {
+            font-size: 40px;
+            text-align: center;
+            padding: 3%;
+            font-family: Footlight MT;
+        }
+        .table_header {
+            width: 100%;
+            height: 10%;
+            background-color: #fff4;
+            padding: .10rem 1rem;
+        }
+        .table_body {
+            width: 97%;
+            max-height: calc(60% - .8rem);
+            background-color: #fffb;
+            margin: .8rem auto;
+            border-radius: .6rem;
+            overflow: auto;
+        }
+        table {
+            width: 100%;
+            border-radius: 5rem;
+            border: none;
+        }
+        table,
+        th,
+        td {
+            border-collapse: collapse;
+            padding: 1rem;
+        }
+        thead th {
+            position: sticky;
+            top: 0;
+            left: 0;
+            background-color: #d5d1defe;
+        }
+        tbody tr:nth-child(even) {
+            background-color: #0000000b;
+        }
+        tbody tr:hover {
+            background-color: #fff6;
+        }
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+    <main class="table">
+        <h3>Liste des demandes des crédits</h3>
+
+        <div class="table_header">
+            <table>
+                <thead>
+                    <tr>
+           <th>Id Credit</th>
+            <th>Numéro de compte</th>
+            <th>Montant</th>
+            <th>Nom</th>
+            <th>cin</th>
+            <th>Prenom</th>
+             <th>Cause</th>          
+            <th>Accepter</th>
+            <th>Refuser</th>
+
+       </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="table_body">
+            <table>
+                <tbody>
+        {% for x in demandesCredit %}
+            <tr>
+                <td>{{ x.idcredit}}</td>
+                <td>{{ x.numero.numero }}</td>
+                <td>{{ x.montant }}</td>
+                <td>{{ x.nom }}</td>
+                       <td>{{ x.cin }}</td>
+                <td>{{ x.prenom }}</td>
+                 
+                <td>{{ x.cause }}</td>
+               
+                <td>
+                    <a href="{{ path('acceptercredit', {'idcredit': x.idcredit }) }}">Accepter</a>
+                    </td>
+                     <td>
+                    <a href="{{ path('refusercredit', {'idcredit': x.idcredit }) }}">Refuser</a>
+                </td>
+    </tr>
+{% endfor %}
+                </tbody>
+                
+            </table>
+        </div>
+    </main>
+    {% endblock %}
